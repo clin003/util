@@ -4,20 +4,24 @@
 HLTY util
 
 #### 软件架构
-软件架构说明
+	util工具库
 
 
 #### 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+	go get gitee.com/lyhuilin/util
+
 
 #### 使用说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+	package main
+	
+	import (
+		"gitee.com/lyhuilin/util"
+	)
+	func main(){
+		……
+	}
 
 #### 参与贡献
 
