@@ -1,6 +1,7 @@
 package util
 
 import (
+	"strings"
 	// "fmt"
 	"time"
 
@@ -63,5 +64,18 @@ func GetRedirectUrlEx(str string, isClear bool) (retText string, err error) {
 	retText = response.Header.Get("Location")
 	// fmt.Println("response.Header", response.Header)
 	// retText = location
+	return
+}
+
+// 还原新浪短链接
+// urlOrg, err := util.GetRedirectUrlEx("http://t.cn/A6c2Ka9G", false)
+// fmt.Println(err, urlOrg)
+// urlOrg, err = util.GetRedirectUrlEx(urlOrg, false)
+// fmt.Println(err, urlOrg)
+func GetRedirectUrlWithTCN(str string, isClear bool) (retText string, err error) {
+	retText, err = GetRedirectUrlEx(str, isClear)
+	if strings.HasPrefix(retText, "https://shop.sc.weibo.com/h5/goods/index") {
+		return GetRedirectUrlEx(retText, isClear)
+	}
 	return
 }
