@@ -112,3 +112,15 @@ func UrlPatchHttp(url string) (ret string) {
 // 	}
 // 	return str[s : s+e]
 // }
+
+// func SubStrRange(s string, length int) string {
+// 	var n, i int
+// 	for i = range s {
+// 		if n == length {
+// 			break
+// 		}
+
+// 		n++
+// 	}
+// 	return s[:i]
+// }
