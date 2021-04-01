@@ -38,3 +38,15 @@ func UnicodeEmojiCode(s string) string {
 	}
 	return ret
 }
+
+// 清除emoji表情
+func TrimEmoji(s string) string {
+	ret := ""
+	rs := []rune(s)
+	for i := 0; i < len(rs); i++ {
+		if len(string(rs[i])) != 4 {
+			ret += string(rs[i])
+		}
+	}
+	return ret
+}
