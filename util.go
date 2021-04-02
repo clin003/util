@@ -1,6 +1,10 @@
 package util
 
 // import (
+// 	"gitee.com/lyhuilin/log"
+// )
+
+// import (
 // 	"github.com/gin-gonic/gin"
 // 	"github.com/teris-io/shortid"
 // )
