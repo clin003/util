@@ -14,7 +14,7 @@ func CreateUUID() (string, error) {
 	_, err := rand.Read(u[:])
 	if err != nil {
 		// log.Errorf(err, "Cannot generate UUID:%s")
-		return
+		return "", err
 	}
 
 	// 0x40 is reserved variant from RFC 4122
