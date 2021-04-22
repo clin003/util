@@ -29,3 +29,11 @@ func CreateUUID() (string, error) {
 // func CreateUUIDStr() string {
 // 	return uuid.New().String()
 // }
+// func GenShortId() (string, error) {
+// 	// return shortid.Generate()
+// 	u, err := uuid.NewRandom()
+// 	if err != nil {
+// 		return "", err
+// 	}
+// 	return u.String(), err
+// }
