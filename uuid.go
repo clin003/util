@@ -3,9 +3,10 @@ package util
 import (
 	"crypto/rand"
 	"fmt"
+	// "github.com/google/uuid"
 )
 
-// 生成随机UUID
+// 生成随机UUID(RFC 4122)
 // create a random UUID with from RFC 4122
 // adapted from http://github.com/nu7hatch/gouuid
 func CreateUUID() (string, error) {
@@ -24,3 +25,7 @@ func CreateUUID() (string, error) {
 	uuid := fmt.Sprintf("%x-%x-%x-%x-%x", u[0:4], u[4:6], u[6:8], u[8:10], u[10:])
 	return uuid, err
 }
+
+// func CreateUUIDStr() string {
+// 	return uuid.New().String()
+// }
