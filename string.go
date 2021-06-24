@@ -5,8 +5,6 @@ import (
 	"strings"
 )
 
-// import "strings"
-
 // 取字符串中间 如果未找到，原样返回。
 func GetBetweenStr(str, start, end string) string {
 	n := strings.Index(str, start)
@@ -87,40 +85,3 @@ func UrlPatchHttp(url string) (ret string) {
 	}
 	return url
 }
-
-// //补全网址协议头
-// func urlPatchHttp(url string) (ret string) {
-// 	if strings.Index(url, "http") < 0 && url != "" {
-// 		var buffer bytes.Buffer
-// 		buffer.WriteString("https:")
-// 		buffer.WriteString(url)
-// 		return buffer.String()
-// 	}
-// 	return url
-// }
-
-// //取字符串中间
-// func between(str, starting, ending string) string {
-// 	s := strings.Index(str, starting)
-// 	if s < 0 {
-// 		return ""
-// 	}
-// 	s += len(starting)
-// 	e := strings.Index(str[s:], ending)
-// 	if e < 0 {
-// 		return ""
-// 	}
-// 	return str[s : s+e]
-// }
-
-// func SubStrRange(s string, length int) string {
-// 	var n, i int
-// 	for i = range s {
-// 		if n == length {
-// 			break
-// 		}
-
-// 		n++
-// 	}
-// 	return s[:i]
-// }

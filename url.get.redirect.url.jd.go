@@ -3,13 +3,8 @@ package util
 import (
 	"fmt"
 	"io/ioutil"
-	"strings"
-
-	// "gitee.com/lyhuilin/open_api/util"
-
-	// "fmt"
-
 	"net/http"
+	"strings"
 )
 
 // 可还原的链接：

@@ -6,12 +6,7 @@ import (
 	"crypto/md5"
 	"encoding/hex"
 	"encoding/json"
-
-	// "fmt"
 	"io/ioutil"
-	// "net/http"
-	// "strconv"
-	// "strings"
 )
 
 func Gzip(data []byte) {

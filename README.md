@@ -18,6 +18,7 @@ HLTY util
 	
 	import (
 		"gitee.com/lyhuilin/util"
+		//"gitee.com/lyhuilin/util/constvar"
 	)
 	func main(){
 		……
