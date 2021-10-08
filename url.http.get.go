@@ -26,8 +26,58 @@ func GetUrlToString(url string) (retText string, err error) {
 	}
 	return
 }
+func GetUrlToStringEx(url string, timeOut time.Duration) (retText string, err error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return
+	}
+	client := &http.Client{Timeout: timeOut}
+	resp, err := client.Do(req)
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+	if resp.StatusCode == 200 {
+		retText = string(body)
+		// retByte = body
+		return
+	} else {
+		err = fmt.Errorf("response status code err:%d", resp.StatusCode)
+	}
+	return
+}
 func GetUrlToByte(url string) (retByte []byte, err error) {
 	resp, err := http.Get(url)
+	if err != nil {
+		return
+	}
+	defer resp.Body.Close()
+
+	body, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return
+	}
+	if resp.StatusCode == 200 {
+		// retText = string(body)
+		retByte = body
+		return
+	} else {
+		err = fmt.Errorf("response status code err:%d", resp.StatusCode)
+	}
+	return
+}
+func GetUrlToByteEx(url string, timeOut time.Duration) (retByte []byte, err error) {
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return
+	}
+	client := &http.Client{Timeout: timeOut}
+	resp, err := client.Do(req)
 	if err != nil {
 		return
 	}
