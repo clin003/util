@@ -9,6 +9,9 @@ import (
 func SleepRandTimeMinute(n int64) {
 	rand.Seed(time.Now().Unix())
 	randInt := rand.Int63n(n)
+if randInt<1{
+randInt=1
+}
 	time.Sleep(time.Duration(randInt) * 2 * time.Minute)
 }
 
@@ -16,6 +19,9 @@ func SleepRandTimeMinute(n int64) {
 func SleepRandTimeSecond(n int64) {
 	rand.Seed(time.Now().Unix())
 	randInt := rand.Int63n(n)
+if randInt<1{
+randInt=1
+}
 	time.Sleep(time.Duration(randInt) * 2 * time.Second)
 }
 
