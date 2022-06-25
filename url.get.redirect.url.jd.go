@@ -1,10 +1,12 @@
 package util
 
 import (
+	"crypto/tls"
 	"fmt"
 	"io/ioutil"
 	"net/http"
 	"strings"
+	"time"
 )
 
 // 可还原的链接：
@@ -15,11 +17,14 @@ func GetRedirectUrlJD(str string, isClear bool) (retText string, err error) {
 		return
 	}
 	// req.Header.Add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8")
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	client := &http.Client{Transport: tr, Timeout: 30 * time.Second}
+	// httpClient := &http.Client{}
+	// client.Timeout = app.Timeout
 
-	httpClient := &http.Client{}
-	// httpClient.Timeout = app.Timeout
-
-	response, err := httpClient.Do(req)
+	response, err := client.Do(req)
 	if err != nil {
 		return
 	}

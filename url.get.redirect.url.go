@@ -1,7 +1,9 @@
 package util
 
 import (
+	"crypto/tls"
 	"strings"
+
 	// "fmt"
 	"time"
 
@@ -42,14 +44,19 @@ func GetRedirectUrlEx(str string, isClear bool) (retText string, err error) {
 		return
 	}
 	// req.Header.Add("Content-Type", "application/x-www-form-urlencoded;charset=utf-8")
-	httpClient := http.Client{
+	tr := &http.Transport{
+		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
+	}
+	// client := &http.Client{Transport: tr}
+	client := http.Client{
+		Transport: tr,
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
 			return http.ErrUseLastResponse
 		},
 		Timeout: 30 * time.Second,
 	}
 
-	response, err := httpClient.Do(req)
+	response, err := client.Do(req)
 	if err != nil {
 		return
 	}
