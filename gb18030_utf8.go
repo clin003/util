@@ -55,7 +55,7 @@ func Utf8ToGb18030String(s string) string {
 }
 
 func GB18030String(str string) string {
-	gbstr, _ := sc.GB18030.NewEncoder().String(str)
+	gbstr, _ := simplifiedchinese.GB18030.NewEncoder().String(str)
 	return gbstr
 }
 
