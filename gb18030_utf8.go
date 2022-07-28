@@ -56,15 +56,15 @@ func Utf8ToGb18030String(s string) string {
 
 // func main() {
 
-// 	s := "GBK 与 UTF-8 编码转换测试"
-// 	gbk, err := Utf8ToGbk([]byte(s))
+// 	s := "GB18030 与 UTF-8 编码转换测试"
+// 	gbk, err := Utf8ToGb18030([]byte(s))
 // 	if err != nil {
 // 		fmt.Println(err)
 // 	} else {
 // 		fmt.Println(string(gbk))
 // 	}
 
-// 	utf8, err := GbkToUtf8(gbk)
+// 	utf8, err := Gb18030ToUtf8(gbk)
 // 	if err != nil {
 // 		fmt.Println(err)
 // 	} else {
