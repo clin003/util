@@ -54,6 +54,11 @@ func Utf8ToGb18030String(s string) string {
 	return string(gbk)
 }
 
+func GB18030String(str string) string {
+	gbstr, _ := sc.GB18030.NewEncoder().String(str)
+	return gbstr
+}
+
 // func main() {
 
 // 	s := "GB18030 与 UTF-8 编码转换测试"
