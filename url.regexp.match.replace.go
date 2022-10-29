@@ -42,3 +42,20 @@ func UrlRegMatchReplace(str string) (ret string) {
 	// fmt.Println(ret)
 	return
 }
+
+func UrlRegMatchReplaceToMarkdown(str string) (ret string) {
+	ret = str
+	compile := regexp.MustCompile(urlReg)
+	urlMap := make(map[string]string)
+	submatch := compile.FindAllSubmatch([]byte(ret), -1)
+	for _, m := range submatch {
+		url := string(m[0])
+		urlMap[url] = fmt.Sprintf("[%s](%s)", url, url)
+	}
+	// fmt.Println(urlMap)
+	for k, v := range urlMap {
+		ret = strings.ReplaceAll(ret, k, v)
+	}
+	// fmt.Println(ret)
+	return
+}
