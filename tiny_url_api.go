@@ -22,7 +22,7 @@ type tinyURLAPIResponse struct {
 // 长链接转短链接
 // http://127.0.0.1:8089/tinyURL?url=http://www.lyhuilin.com
 // {"code":0,"message":"OK","data":{"url":"http://www.lyhuilin.com","short_url":"https://u.nav.xin/4i"}}
-func tinyURLAPI(langURL, apiBaseURL string, timeDuration time.Duration, isJson bool) (retText string, err error) {
+func TinyURLAPI(langURL, apiBaseURL string, timeDuration time.Duration, isJson bool) (retText string, err error) {
 	apiBaseSite := apiBaseURL
 
 	p := url.Values{}
