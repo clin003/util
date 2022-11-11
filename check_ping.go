@@ -17,7 +17,7 @@ type pingPoneResponse struct {
 }
 
 // 自检openAPI服务是否正常运行
-func PingBaseURL(baseURL string) (retBool bool) {
+func CheckPingBaseURL(baseURL string) (retBool bool) {
 	if !strings.HasPrefix(baseURL, "http") {
 		return
 	}
@@ -48,5 +48,8 @@ func PingBaseURL(baseURL string) (retBool bool) {
 	if pingPong.Code > 0 || pingPong.Message != "pong" {
 		return
 	}
-
+	if pingPong.Message == "pong" {
+		return true
+	}
+	return true
 }
