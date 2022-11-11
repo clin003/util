@@ -11,6 +11,11 @@ HLTY util
 
 	go get gitee.com/lyhuilin/util
 
+#### 更新教程
+
+	go get -u gitee.com/lyhuilin/util
+
+
 
 #### 使用说明
 
