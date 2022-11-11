@@ -33,7 +33,7 @@ func CheckPingBaseURL(baseURL string) (retBool bool) {
 		return
 	}
 	defer resp.Body.Close()
-	if resp.Status != http.StatusOK {
+	if resp.StatusCode != http.StatusOK {
 		return
 	}
 	body, err := ioutil.ReadAll(resp.Body)
