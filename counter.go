@@ -1,6 +1,7 @@
 package util
 
 import (
+	"math"
 	"sync"
 )
 
@@ -21,7 +22,7 @@ func (c *BCounter) Inc() {
 	defer c.lock.Unlock()
 	value := c.counter
 	value++
-	if value > 1000000 {
+	if value >= math.MaxInt64 {
 		value = 0
 	}
 	c.counter = value
