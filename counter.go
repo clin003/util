@@ -1,6 +1,7 @@
 package util
 
 import (
+	"fmt"
 	"sync"
 )
 
@@ -16,11 +17,15 @@ type BCounter struct {
 }
 
 func (c *BCounter) Inc() {
-	c.lock.Lock()
-	defer c.lock.Unlock()
-	value := c.counter
-	value++
-	c.counter = value
+	if c.lock.TryLock() {
+		c.lock.Lock()
+		defer c.lock.Unlock()
+		value := c.counter
+		value++
+		c.counter = value
+	} else {
+		fmt.Println(".")
+	}
 }
 func (c *BCounter) IsNice() bool {
 	if c.lock.TryLock() {
