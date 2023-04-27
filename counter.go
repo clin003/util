@@ -21,7 +21,7 @@ func (c *BCounter) Inc() {
 	defer c.lock.Unlock()
 	value := c.counter
 	value++
-	if value > 100000000 {
+	if value > 1000000 {
 		value = 0
 	}
 	c.counter = value
@@ -60,4 +60,9 @@ func (c *BCounter) IsNice() bool {
 	// } else {
 	// 	return false
 	// }
+}
+func (c *BCounter) Get() int64 {
+	c.lock.Lock()
+	defer c.lock.Unlock()
+	return c.counter
 }
