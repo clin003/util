@@ -5,6 +5,7 @@ import (
 	"sync"
 )
 
+// 计数器
 var Counter *BCounter
 
 func init() {
