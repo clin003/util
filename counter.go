@@ -26,15 +26,6 @@ func (c *BCounter) Inc() {
 		value = 0
 	}
 	c.counter = value
-	// if c.lock.TryLock() {
-	// 	c.lock.Lock()
-	// 	defer c.lock.Unlock()
-	// 	value := c.counter
-	// 	value++
-	// 	c.counter = value
-	// } else {
-	// 	fmt.Println(".", c.counter)
-	// }
 }
 func (c *BCounter) IsNice() bool {
 	c.lock.Lock()
@@ -46,21 +37,6 @@ func (c *BCounter) IsNice() bool {
 	} else {
 		return false
 	}
-
-	// if c.lock.TryLock() {
-	// 	c.lock.Lock()
-	// 	defer c.lock.Unlock()
-
-	// 	value := c.counter
-	// 	if (value % 1000) == 0 {
-	// 		return true
-	// 	} else {
-	// 		return false
-	// 	}
-	// 	// return ((value % 1000) == 0)
-	// } else {
-	// 	return false
-	// }
 }
 func (c *BCounter) Get() int64 {
 	c.lock.Lock()
