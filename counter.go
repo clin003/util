@@ -28,16 +28,16 @@ func (c *BCounter) Inc() {
 	c.counter = value
 }
 func (c *BCounter) IsNice() bool {
-	// c.lock.Lock()
-	// defer c.lock.Unlock()
+	c.lock.Lock()
+	defer c.lock.Unlock()
 
-	// value := c.counter
-	// if (value % 500) == 0 {
-	// 	return true
-	// } else {
-	// 	return false
-	// }
-	return c.IsNiceWithNum(500)
+	value := c.counter
+	if (value % 500) == 0 {
+		return true
+	} else {
+		return false
+	}
+	// return c.IsNiceWithNum(500)
 }
 func (c *BCounter) IsNiceWithNum(num int64) bool {
 	c.lock.Lock()
