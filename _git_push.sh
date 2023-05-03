@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.1.9
+VERSION=0.1.10
 APPNAME=util
 
 git add .

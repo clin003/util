@@ -32,7 +32,7 @@ func (c *BCounter) IsNice() bool {
 	defer c.lock.Unlock()
 
 	value := c.counter
-	if (value % 1000) == 0 {
+	if (value % 500) == 0 {
 		return true
 	} else {
 		return false
