@@ -17,6 +17,9 @@ func EncryptSha1(plaintext string) (cryptext string) {
 
 // hash plaintext with md5
 func EncryptMd5(source string) (cryptext string) {
+	if len(source) <= 0 {
+		return ""
+	}
 	// 使用MD5加密
 	signBytes := md5.Sum([]byte(source))
 	// 把二进制转化为大写的十六进制
