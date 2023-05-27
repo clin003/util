@@ -42,6 +42,7 @@ func MsgTextCleanerCheck(msgText string, maxKey int) (retBool bool) {
 	return CrosscheckKey(msgCleanerHash, maxKey)
 }
 
+// 检查 msgmsgSignature 是否已记录 true 真 存在，false 不存在，不存在存储
 func MsgSignatureCheckEx(msgmsgSignature, msgText string, maxKey int) (retBool bool) {
 	return MsgSignatureCheck(msgmsgSignature, maxKey) || MsgTextCleanerCheck(msgText, maxKey)
 }
