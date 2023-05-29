@@ -35,11 +35,11 @@ func CrosscheckKey(key string, maxKey int) (retBool bool) {
 
 // 检查 msgmsgSignature 是否已记录 true 真 存在，false 不存在，不存在存储
 func MsgSignatureCheck(msgmsgSignature string, maxKey int) (retBool bool) {
-	return CrosscheckKey(msgmsgSignature, maxKey)
+	return CrosscheckKey("k1"+msgmsgSignature, maxKey)
 }
 func MsgTextCleanerCheck(msgText string, maxKey int) (retBool bool) {
 	_, msgCleanerHash := GetTextCleaner(msgText)
-	return CrosscheckKey(msgCleanerHash, maxKey)
+	return CrosscheckKey("k2"+msgCleanerHash, maxKey)
 }
 
 // 检查 msgmsgSignature 是否已记录 true 真 存在，false 不存在，不存在存储
