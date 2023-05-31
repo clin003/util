@@ -28,6 +28,11 @@ func GetTextCleaner(textStr string) (retText, retHash string) {
 	// 清理变异字
 	textTmp = strings.ReplaceAll(textTmp, "元", "")
 	textTmp = strings.ReplaceAll(textTmp, "亓", "")
+	textTmp = strings.ReplaceAll(textTmp, "买", "")
+	textTmp = strings.ReplaceAll(textTmp, "抄底", "")
+	textTmp = strings.ReplaceAll(textTmp, "后", "")
+	textTmp = strings.ReplaceAll(textTmp, "奍", "卷")
+	textTmp = strings.ReplaceAll(textTmp, "圈", "卷")
 	textTmp = strings.ReplaceAll(textTmp, "劵", "卷")
 	textTmp = strings.ReplaceAll(textTmp, "拎", "领")
 	textTmp = strings.ReplaceAll(textTmp, "単", "单")
