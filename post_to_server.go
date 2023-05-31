@@ -8,7 +8,7 @@ import (
 	"time"
 )
 
-func PostToServer(serverApiUrl, serverToken string, postData interface{}) (ret string, err error) {
+func PostToServer(serverApiUrl, serverToken string, postData interface{}) (ret []byte, err error) {
 	jsonParams, err := json.Marshal(postData)
 	if err != nil {
 		return
@@ -33,11 +33,21 @@ func PostToServer(serverApiUrl, serverToken string, postData interface{}) (ret s
 		return
 	}
 	defer resp.Body.Close()
-	body, err := io.ReadAll(resp.Body)
+	return io.ReadAll(resp.Body)
+	// body, err := io.ReadAll(resp.Body)
+	// if err != nil {
+	// 	return
+	// }
+	// // fmt.Println(res)
+	// // ret = string(body)
+	// return body, nil
+}
+
+func PostToServerEx(serverApiUrl, serverToken string, postData interface{}) (ret string, err error) {
+	body, err := PostToServer(serverApiUrl, serverToken, postData)
 	if err != nil {
 		return
 	}
-	// fmt.Println(res)
 	ret = string(body)
 	return
 }
