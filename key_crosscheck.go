@@ -13,7 +13,9 @@ func CrosscheckKey(key string, maxKey int) (retBool bool) {
 	if len(key) <= 0 || strings.EqualFold(key, "k1") || strings.EqualFold(key, "k2") {
 		return false
 	}
-
+	if maxKey > 1000 {
+		maxKey = 1000
+	}
 	lockCacheCrosscheckKey.Lock()
 	defer lockCacheCrosscheckKey.Unlock()
 
