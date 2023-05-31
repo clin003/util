@@ -10,7 +10,7 @@ var cacheCrosscheckKey []string
 
 // 检查 key 是否存在 true 真 存在，false 不存在/或key为空，不存在存储
 func CrosscheckKey(key string, maxKey int) (retBool bool) {
-	if len(key) <= 0 {
+	if len(key) <= 0 || strings.EqualFold(key, "k1") || strings.EqualFold(key, "k2") {
 		return false
 	}
 
