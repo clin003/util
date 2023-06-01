@@ -34,14 +34,20 @@ func CrosscheckKey(key string, maxKey int) (retBool bool) {
 
 	return false
 }
+func CrosscheckKeyWithBase(keyBase, key string, maxKey int) (retBool bool) {
+	if len(key) <= 0 || strings.EqualFold(key, keyBase) {
+		return false
+	}
+	return CrosscheckKey(key, maxKey)
+}
 
 // 检查 msgmsgSignature 是否已记录 true 真 存在，false 不存在，不存在存储
 func MsgSignatureCheck(msgmsgSignature string, maxKey int) (retBool bool) {
-	return CrosscheckKey("k1"+msgmsgSignature, maxKey)
+	return CrosscheckKeyWithBase("k1", "k1"+msgmsgSignature, maxKey)
 }
 func MsgTextCleanerCheck(msgText string, maxKey int) (retBool bool) {
 	_, msgCleanerHash := GetTextCleaner(msgText)
-	return CrosscheckKey("k2"+msgCleanerHash, maxKey)
+	return CrosscheckKeyWithBase("k2", "k2"+msgCleanerHash, maxKey)
 }
 
 // 检查 msgmsgSignature 是否已记录 true 真 存在，false 不存在，不存在存储
