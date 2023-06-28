@@ -41,3 +41,26 @@ func KeyworldListParseToMap(keyworldText string) map[string]string {
 	}
 	return retMap
 }
+
+//解析 k>>kc|k1>>kc1 到 arr map
+func KeyworldListParseToArrMap(keyworldText string) []map[string]string {
+	keyworldList := KeyworldListParse(keyworldText)
+	retArr := make([]map[string]string, 0)
+
+	for _, v := range keyworldList {
+		if len(v) > 0 {
+			retMap := make(map[string]string, 0)
+			if strings.Contains(v, ">>") {
+				if vk, vv, isOk := strings.Cut(v, ">>"); isOk {
+					if len(vk) > 0 {
+						retMap[vk] = vv
+					}
+				}
+			} else {
+				retMap[v] = ""
+			}
+			retArr = append(retArr, retMap)
+		}
+	}
+	return retArr
+}
