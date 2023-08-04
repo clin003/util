@@ -46,7 +46,7 @@ func UrlRegMatchReplaceToMarkdown(str string) (ret string) {
 	return
 }
 
-func UrlRegMatchReplaceToHTML(str string) (ret string, err error) {
+func UrlRegMatchReplaceToTGHTML(str string) (ret string, err error) {
 	ret = str
 	tplParseText := str
 	compile := regexp.MustCompile(urlReg)
