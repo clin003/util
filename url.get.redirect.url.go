@@ -2,6 +2,7 @@ package util
 
 import (
 	"crypto/tls"
+	"io"
 	"strings"
 
 	// "fmt"
@@ -32,6 +33,7 @@ func GetRedirectUrl(str string, isClear bool) (string, error) {
 }
 
 // 可还原的链接：
+// 淘宝 https://m.tb.cn/h.52VLTIe
 // 淘宝 https://s.click.taobao.com/rioMXxu  二合一链接
 // 苏宁 https://sugs.suning.com/HpGbzgk6
 // https://sugs.suning.com/HpCPkl3B
@@ -62,6 +64,21 @@ func GetRedirectUrlEx(str string, isClear bool) (retText string, err error) {
 	}
 	defer response.Body.Close()
 
+	if response.StatusCode == 200 &&
+		(strings.HasPrefix(str, "https://m.tb.cn") || strings.HasPrefix(str, "http://m.tb.cn")) {
+		retText = response.Request.URL.String()
+		body, err := io.ReadAll(response.Body)
+		if err != nil {
+			return retText, err
+		}
+		bodyText := string(body)
+		bodyText = strings.ReplaceAll(bodyText, " ", "")
+		bodyText = BetweenStr(bodyText, "varurl='", "';")
+		if strings.HasPrefix(bodyText, "http") {
+			retText = bodyText
+		}
+		return retText, nil
+	}
 	// fmt.Println("response.StatusCode", response.StatusCode)
 	if response.StatusCode == 200 {
 		// err = fmt.Errorf("请求错误:%d", response.StatusCode)
