@@ -46,6 +46,7 @@ func UrlRegMatchReplaceToMarkdown(str string) (ret string) {
 	return
 }
 
+// 识别文案中链接，并转义，输出为TG支持的HTML格式文案
 func UrlRegMatchReplaceToTGHTML(str string) (ret string, err error) {
 	ret = str
 	tplParseText := str
@@ -66,6 +67,36 @@ func UrlRegMatchReplaceToTGHTML(str string) (ret string, err error) {
 		return ret, fmt.Errorf("template parsing failed: %w", err)
 	}
 	if err := tpl.Execute(&result, urlMap); err != nil {
+		return ret, fmt.Errorf("template execution failed: %w", err)
+	}
+	retHtml := result.String()
+	return retHtml, nil
+}
+
+// urlMap[title]url，转义，输出为TG支持的HTML格式文案
+func UrlMapToTGHTML(urlMap map[string]string) (ret string, err error) {
+	ret = ""
+	tplParseText := ""
+	urlKeyMap := make(map[string]string)
+	for k, v := range urlMap {
+		vc := v
+		kc := k
+		kHash := "k" + MD5Hash(vc)
+		urlKeyMap[kHash] = kc
+	}
+	for k, v := range urlKeyMap {
+		vc := v
+		kc := k
+		tplParseText = tplParseText + fmt.Sprintf("<a href=\"%s\">{{ .%s }}</a>\n", urlMap[vc], kc)
+	}
+	tplParseText = strings.TrimSpace(tplParseText)
+	// fmt.Println("tplParseText", tplParseText)
+	var result bytes.Buffer
+	tpl, err := template.New("message").Parse(tplParseText)
+	if err != nil {
+		return ret, fmt.Errorf("template parsing failed: %w", err)
+	}
+	if err := tpl.Execute(&result, urlKeyMap); err != nil {
 		return ret, fmt.Errorf("template execution failed: %w", err)
 	}
 	retHtml := result.String()
