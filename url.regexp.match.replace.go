@@ -73,6 +73,18 @@ func UrlRegMatchReplaceToTGHTML(str string) (ret string, err error) {
 	return retHtml, nil
 }
 
+// hanMap := make(map[string]string, 0)
+// hanMap["汉//\\字"] = "http://han.com"
+// hanMap["汉.df||字2"] = "http://han2.com"
+// ret, err := util.UrlMapToTGHTML(hanMap)
+//
+//	if err != nil {
+//		fmt.Println("出错了", err)
+//	} else {
+//
+//		fmt.Println("ret", ret)
+//	}
+//
 // urlMap[title]url，转义，输出为TG支持的HTML格式文案
 func UrlMapToTGHTML(urlMap map[string]string) (ret string, err error) {
 	ret = ""
