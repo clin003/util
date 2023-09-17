@@ -26,3 +26,17 @@ func SubStrRange(s string, length int) string {
 
 	return s[:i]
 }
+
+// 截图字符串前N个字符内容
+func SubStrRuneN(textStr string, n int) (retText string) {
+	if len(textStr) <= 0 {
+		return ""
+	}
+	retText = textStr
+	textR := []rune(retText)
+	if len(textR) > n {
+		retText = string(textR[:n-1])
+	}
+	retText = strings.TrimSpace(retText)
+	return retText
+}
