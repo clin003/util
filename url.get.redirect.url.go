@@ -3,12 +3,9 @@ package util
 import (
 	"crypto/tls"
 	"io"
-	"strings"
-
-	// "fmt"
-	"time"
-
 	"net/http"
+	"strings"
+	"time"
 )
 
 // 可还原的链接：
