@@ -1,4 +1,4 @@
-module gitee.com/lyhuilin/util
+module github.com/clin003/util
 
 go 1.20
 
